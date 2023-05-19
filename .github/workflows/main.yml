@@ -1,0 +1,15 @@
+name: Tests
+
+on: [push, workflow_dispatch]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    container: epitechcontent/epitest-docker
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: BUILD
+        run: |
+          make && make re && make clean && make fclean
